@@ -6,7 +6,7 @@
 | 172.20.10.53 | CentOS 7.2 | db-Slave1 |
 | 172.20.177.0 | CentOS 7.2 | db-Slave2 |
 
-**分别在三台机器上继续如下设置**
+**分别在三台机器上进行如下设置**
 
 
 
@@ -60,7 +60,7 @@ default_storage_engine=InnoDB
 
 
 
-### 关闭数据器&以Galera形式启动
+### 关闭数据库&以Galera形式启动
 
 - 在db-master节点执行: 
 
@@ -80,7 +80,7 @@ default_storage_engine=InnoDB
   mysqld --wsrep_cluster_address=gcomm://db-master --user=root
   ```
 
-  > 注意，仅且仅有在一个节点上能执行：mysqld --wsrep-new-cluster --user=root &, 当前命令表示开启一个新的galera集群，其他节点通过政策启动加入当前节点并同步数据
+  > 注意，仅且仅能在一个节点上能执行：mysqld --wsrep-new-cluster --user=root &, 当前命令表示开启一个新的galera集群，其他节点通过命令启动加入当前节点并同步数据
 
 ### 集群验证
 
