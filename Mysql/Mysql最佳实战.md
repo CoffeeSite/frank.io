@@ -42,7 +42,7 @@ service mysqld restart
 log-error=
 ```
 
-## Mysql内存计划
+## Mysql内存大小计算
 Mysql占用内存大小主要由两部分组成，innodb_buffer_size+连接大小*连接数。
 innodb_buffer_size的大小通过参数查询。
 
