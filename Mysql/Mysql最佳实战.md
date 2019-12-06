@@ -42,6 +42,42 @@ service mysqld restart
 log-error=
 ```
 
+## Mysql内存计划
+Mysql占用内存大小主要由两部分组成，innodb_buffer_size+连接大小*连接数。
+innodb_buffer_size的大小通过参数查询。
+
+每个连接的大小
+```
+SELECT ( ( @@read_buffer_size
++ @@read_rnd_buffer_size
++ @@sort_buffer_size
++ @@join_buffer_size
++ @@binlog_cache_size
++ @@thread_stack
++ @@net_buffer_length )
+) / (1024*1024) AS MEMORY_MB;
+```
+
+###查看innodb的缓存命中率
+计算公式:Innodb_buffer_pool_read_requests/(Innodb_buffer_pool_read_requests+Innodb_buffer_pool_read_ahead+Innodb_buffer_pool_reads)
+```
+mysql> show global status like 'innodb%read%';
++---------------------------------------+------------+
+| Variable_name                         | Value      |
++---------------------------------------+------------+
+| Innodb_buffer_pool_read_ahead_rnd     | 0          |
+| Innodb_buffer_pool_read_ahead         | 246        |   利用后台线程从 innodb buffer 中预读的次数
+| Innodb_buffer_pool_read_ahead_evicted | 0          |
+| Innodb_buffer_pool_read_requests      | 4715675354 |   从 innodb buffer 中产生的数据读次数
+| Innodb_buffer_pool_reads              | 1378       |   从物理磁盘中读数据到 innodb buffer 次数
+| Innodb_data_pending_reads             | 0          |
+| Innodb_data_read                      | 28790784   |   读书字节数
+| Innodb_data_reads                     | 1400       |   读取请求数（一次可能读入多页）
+| Innodb_pages_read                     | 1623       |
+| Innodb_rows_read                      | 4655914819 |
++---------------------------------------+------------+
+10 rows in set (0.01 sec)
+```
 
 
 ### 查询缓存
