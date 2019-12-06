@@ -58,7 +58,7 @@ SELECT ( ( @@read_buffer_size
 ) / (1024*1024) AS MEMORY_MB;
 ```
 
-###查看innodb的缓存命中率
+### 查看innodb的缓存命中率
 计算公式:Innodb_buffer_pool_read_requests/(Innodb_buffer_pool_read_requests+Innodb_buffer_pool_read_ahead+Innodb_buffer_pool_reads)
 ```
 mysql> show global status like 'innodb%read%';
