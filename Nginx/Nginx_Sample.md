@@ -1,16 +1,16 @@
 ## Nginx Sample
 
 ```nginx
-user  nginx;
-worker_processes 8;
-worker_rlimit_nofile 65535;
+user  nginx;   --已nginx用户运行
+worker_processes 8;     --worker线程数，通常为cpu的核数
+worker_rlimit_nofile 65535;    --nginx最大能打开的文件句柄数
 
 #error_log  /var/log/nginx/error.log warn;
 error_log  /home/eoop/nginx/log/error.log warn;
 pid        /var/run/nginx.pid;
 
 events {
-    worker_connections  65535;
+    worker_connections  65535;    --worker的最大连接数
 }
 
 http {
