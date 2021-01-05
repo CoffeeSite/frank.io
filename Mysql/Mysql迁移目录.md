@@ -33,6 +33,7 @@ rm -rf /home/eoop/mysql/ib_logfile1
 
 
 #### 保护目录修改
+Mysql默认不允许迁移到home目录，如果需要到home目录，需要修改如下配置
 
 ```
 vim /usr/lib/systemd/system/mariadb.service
