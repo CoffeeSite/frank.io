@@ -38,6 +38,9 @@ https://zhuanlan.zhihu.com/p/269597178
 ### 内存溢出快照设置
 
 -XX:+HeapDumpOnOutOfMemory” 和 “-XX:HeapDumpPath=/data/jvm/dumpfile.hprof
+```java
+-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=./logs/gc.hprof -Djava.security.egd=file:/dev/./urando
+```
 
 
 
