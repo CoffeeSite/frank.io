@@ -1,0 +1,1 @@
+mysqlbinlog   --no-defaults  --database=geeRunner -hrm-uf6i9649r27evlxpjuo.mysql.rds.aliyuncs.com  -p --base64-output=decode-rows -v --start-datetime="2022-03-08 09:00:09" --stop-datetime="2022-03-08 10:00:09"  /root/mysql-bin.000521 > sanjiaomao.txt
