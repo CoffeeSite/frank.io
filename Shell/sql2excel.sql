@@ -1,0 +1,20 @@
+SELECT
+  TABLE_NAME 表名,
+	ORDINAL_POSITION 序号,
+	COLUMN_NAME 字段名称,
+	COLUMN_TYPE 字段类型,
+	COLUMN_DEFAULT 默认值,
+	CHARACTER_MAXIMUM_LENGTH AS 最大长度,
+	(
+		CASE
+		WHEN column_key = 'PRI' THEN
+			'是'
+		ELSE
+			'否'
+		END
+	) AS 是否主键,
+	COLUMN_COMMENT 描述
+FROM
+	INFORMATION_SCHEMA. COLUMNS
+WHERE
+	table_schema = 'eoop_studio'
